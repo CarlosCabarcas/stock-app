@@ -13,6 +13,8 @@ import (
 func main() {
 	database := db.Init()
 
+	db.AutoMigrate(database)
+
 	stockRepo := repository.NewStockRepository(database)
 	stockService := service.NewStockService(stockRepo)
 	stockHandler := handler.NewStockHandler(stockService)
